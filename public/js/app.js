@@ -28648,10 +28648,10 @@
 	        null,
 	        _get__('React').createElement(
 	          _get__('Button'),
-	          { type: 'success', onClick: function onClick() {
+	          { type: 'secondary', onClick: function onClick() {
 	              return console.log('hello world');
 	            } },
-	          'Hello world'
+	          'Hello secondary'
 	        ),
 	        _get__('React').createElement(
 	          _get__('Button'),
@@ -28680,11 +28680,6 @@
 	              return console.log('hello world');
 	            } },
 	          'Hello world'
-	        ),
-	        _get__('React').createElement(
-	          'button',
-	          null,
-	          'Hell'
 	        )
 	      );
 	    }
@@ -28956,7 +28951,7 @@
 
 	      var classes = _get__('cx')('btn', className, {
 	        'btn-default': type === 'default',
-	        'btn-success': type === 'success',
+	        'btn-secondary': type === 'secondary',
 	        'btn-primary': type === 'primary',
 	        'btn-warning': type === 'warning',
 	        'btn-danger': type === 'danger'
@@ -28975,7 +28970,7 @@
 	Button.propTypes = {
 	  children: _get__('React').PropTypes.node,
 	  onClick: _get__('React').PropTypes.func,
-	  type: _get__('React').PropTypes.oneOf(['default', 'primary', 'success', 'danger', 'warning'])
+	  type: _get__('React').PropTypes.oneOf(['default', 'primary', 'secondary', 'danger', 'warning'])
 	};
 	exports.default = Button;
 

@@ -5,7 +5,7 @@ export default class Button extends Component {
   static propTypes = {
     children: React.PropTypes.node,
     onClick: React.PropTypes.func,
-    type: React.PropTypes.oneOf(['default', 'primary', 'success', 'danger', 'warning']),
+    type: React.PropTypes.oneOf(['default', 'primary', 'secondary', 'danger', 'warning']),
   }
 
   _handleClick = () => {
@@ -17,7 +17,7 @@ export default class Button extends Component {
 
     const classes = cx('btn', className, {
       'btn-default': type === 'default',
-      'btn-success': type === 'success',
+      'btn-secondary': type === 'secondary',
       'btn-primary': type === 'primary',
       'btn-warning': type === 'warning',
       'btn-danger': type === 'danger',
