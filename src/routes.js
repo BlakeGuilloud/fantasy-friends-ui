@@ -1,11 +1,13 @@
 import App from './App';
-// import { Test } from './components';
+import { Home } from './components';
+console.log('home', Home);
 
 const routes = {
   path: '/',
   component: App,
+  indexRoute: { component: Home },
   // childRoutes: [
-    // { path: '/test', component: Test },
+  //   { path: '/test', component: Test },
   // ],
 }
 

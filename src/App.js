@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Header } from './components';
+import { Header, Navigation } from './components';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <div>
-        <Header />
-        {this.props.children}
+      <div className="app-layout">
+      <Header />
+        <div className="app-layout__main">
+          <Navigation />
+          {this.props.children}
+        </div>
       </div>
     );
   }
 }
-
-export default App;

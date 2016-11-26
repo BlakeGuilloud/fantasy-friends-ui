@@ -27944,13 +27944,16 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
+	var _components = __webpack_require__(327);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import { Test } from './components';
+	console.log('home', _get__('Home'));
 
 	var routes = {
 	  path: '/',
-	  component: _get__('App')
+	  component: _get__('App'),
+	  indexRoute: { component: _get__('Home') }
 	};
 
 	exports.default = _get__('routes');
@@ -27994,6 +27997,9 @@
 
 	function _get_original__(variableName) {
 	  switch (variableName) {
+	    case 'Home':
+	      return _components.Home;
+
 	    case 'App':
 	      return _App2.default;
 
@@ -28203,16 +28209,21 @@
 	    value: function render() {
 	      return _get__('React').createElement(
 	        'div',
-	        null,
+	        { className: 'app-layout' },
 	        _get__('React').createElement(_get__('Header'), null),
-	        this.props.children
+	        _get__('React').createElement(
+	          'div',
+	          { className: 'app-layout__main' },
+	          _get__('React').createElement(_get__('Navigation'), null),
+	          this.props.children
+	        )
 	      );
 	    }
 	  }]);
 	  return App;
 	}(_get__('Component'));
 
-	exports.default = _get__('App');
+	exports.default = App;
 
 	var _RewiredData__ = (0, _create2.default)(null);
 
@@ -28256,14 +28267,14 @@
 	    case 'Component':
 	      return _react.Component;
 
-	    case 'App':
-	      return App;
-
 	    case 'React':
 	      return _react2.default;
 
 	    case 'Header':
 	      return _components.Header;
+
+	    case 'Navigation':
+	      return _components.Navigation;
 	  }
 
 	  return undefined;
@@ -28563,21 +28574,31 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Header = undefined;
+	exports.Navigation = exports.Home = exports.Header = undefined;
 
 	var _Header = __webpack_require__(328);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
+	var _Home = __webpack_require__(329);
+
+	var _Home2 = _interopRequireDefault(_Home);
+
+	var _Navigation = __webpack_require__(330);
+
+	var _Navigation2 = _interopRequireDefault(_Navigation);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.Header = _Header2.default;
+	exports.Home = _Home2.default;
+	exports.Navigation = _Navigation2.default;
 
 /***/ },
 /* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28628,8 +28649,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _patterns = __webpack_require__(329);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Header = function (_get__2) {
@@ -28641,51 +28660,21 @@
 	  }
 
 	  (0, _createClass3.default)(Header, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _get__('React').createElement(
-	        'div',
-	        null,
-	        _get__('React').createElement(
-	          _get__('Button'),
-	          { type: 'secondary', onClick: function onClick() {
-	              return console.log('hello world');
-	            } },
-	          'Hello secondary'
-	        ),
-	        _get__('React').createElement(
-	          _get__('Button'),
-	          { type: 'primary', onClick: function onClick() {
-	              return console.log('hello world');
-	            } },
-	          'Hello world'
-	        ),
-	        _get__('React').createElement(
-	          _get__('Button'),
-	          { type: 'warning', onClick: function onClick() {
-	              return console.log('hello world');
-	            } },
-	          'Hello world'
-	        ),
-	        _get__('React').createElement(
-	          _get__('Button'),
-	          { type: 'danger', onClick: function onClick() {
-	              return console.log('hello world');
-	            } },
-	          'Hello world'
-	        ),
-	        _get__('React').createElement(
-	          _get__('Button'),
-	          { type: 'default', onClick: function onClick() {
-	              return console.log('hello world');
-	            } },
-	          'Hello world'
+	      return _get__("React").createElement(
+	        "div",
+	        { className: "app-header" },
+	        _get__("React").createElement(
+	          "div",
+	          { className: "app-header__logo" },
+	          "The Fantasy Friends"
 	        )
 	      );
 	    }
 	  }]);
 	  return Header;
-	}(_get__('Component'));
+	}(_get__("Component"));
 
 	exports.default = Header;
 
@@ -28728,14 +28717,11 @@
 
 	function _get_original__(variableName) {
 	  switch (variableName) {
-	    case 'Component':
+	    case "Component":
 	      return _react.Component;
 
-	    case 'React':
+	    case "React":
 	      return _react2.default;
-
-	    case 'Button':
-	      return _patterns.Button;
 	  }
 
 	  return undefined;
@@ -28766,7 +28752,7 @@
 	}
 
 	function _set__(variableName, value) {
-	  if ((typeof variableName === 'undefined' ? 'undefined' : (0, _typeof3.default)(variableName)) === 'object') {
+	  if ((typeof variableName === "undefined" ? "undefined" : (0, _typeof3.default)(variableName)) === 'object') {
 	    (0, _keys2.default)(variableName).forEach(function (name) {
 	      _RewiredData__[name] = variableName[name];
 	    });
@@ -28814,7 +28800,7 @@
 	  };
 	}
 
-	var _typeOfOriginalExport = typeof Header === 'undefined' ? 'undefined' : (0, _typeof3.default)(Header);
+	var _typeOfOriginalExport = typeof Header === "undefined" ? "undefined" : (0, _typeof3.default)(Header);
 
 	function addNonEnumerableProperty(name, value) {
 	  (0, _defineProperty2.default)(Header, name, {
@@ -28844,25 +28830,6 @@
 
 /***/ },
 /* 329 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Button = undefined;
-
-	var _Button = __webpack_require__(330);
-
-	var _Button2 = _interopRequireDefault(_Button);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.Button = _Button2.default;
-
-/***/ },
-/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28916,63 +28883,30 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(331);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Button = function (_get__2) {
-	  (0, _inherits3.default)(Button, _get__2);
+	var Home = function (_get__2) {
+	  (0, _inherits3.default)(Home, _get__2);
 
-	  function Button() {
-	    var _ref;
-
-	    var _temp, _this, _ret;
-
-	    (0, _classCallCheck3.default)(this, Button);
-
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Button.__proto__ || (0, _getPrototypeOf2.default)(Button)).call.apply(_ref, [this].concat(args))), _this), _this._handleClick = function () {
-	      if (_this.props.onClick && typeof _this.props.onClick === 'function') _this.props.onClick();
-	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	  function Home() {
+	    (0, _classCallCheck3.default)(this, Home);
+	    return (0, _possibleConstructorReturn3.default)(this, (Home.__proto__ || (0, _getPrototypeOf2.default)(Home)).apply(this, arguments));
 	  }
 
-	  (0, _createClass3.default)(Button, [{
+	  (0, _createClass3.default)(Home, [{
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props,
-	          className = _props.className,
-	          type = _props.type;
-
-
-	      var classes = _get__('cx')('btn', className, {
-	        'btn-default': type === 'default',
-	        'btn-secondary': type === 'secondary',
-	        'btn-primary': type === 'primary',
-	        'btn-warning': type === 'warning',
-	        'btn-danger': type === 'danger'
-	      });
-
 	      return _get__('React').createElement(
-	        'button',
-	        { className: classes, onClick: this._handleClick },
-	        this.props.children
+	        'div',
+	        null,
+	        'hello from home'
 	      );
 	    }
 	  }]);
-	  return Button;
+	  return Home;
 	}(_get__('Component'));
 
-	Button.propTypes = {
-	  children: _get__('React').PropTypes.node,
-	  onClick: _get__('React').PropTypes.func,
-	  type: _get__('React').PropTypes.oneOf(['default', 'primary', 'secondary', 'danger', 'warning'])
-	};
-	exports.default = Button;
+	exports.default = Home;
 
 	var _RewiredData__ = (0, _create2.default)(null);
 
@@ -29013,14 +28947,11 @@
 
 	function _get_original__(variableName) {
 	  switch (variableName) {
-	    case 'React':
-	      return _react2.default;
-
-	    case 'cx':
-	      return _classnames2.default;
-
 	    case 'Component':
 	      return _react.Component;
+
+	    case 'React':
+	      return _react2.default;
 	  }
 
 	  return undefined;
@@ -29099,17 +29030,17 @@
 	  };
 	}
 
-	var _typeOfOriginalExport = typeof Button === 'undefined' ? 'undefined' : (0, _typeof3.default)(Button);
+	var _typeOfOriginalExport = typeof Home === 'undefined' ? 'undefined' : (0, _typeof3.default)(Home);
 
 	function addNonEnumerableProperty(name, value) {
-	  (0, _defineProperty2.default)(Button, name, {
+	  (0, _defineProperty2.default)(Home, name, {
 	    value: value,
 	    enumerable: false,
 	    configurable: true
 	  });
 	}
 
-	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Button)) {
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Home)) {
 	  addNonEnumerableProperty('__get__', _get__);
 	  addNonEnumerableProperty('__GetDependency__', _get__);
 	  addNonEnumerableProperty('__Rewire__', _set__);
@@ -29128,58 +29059,248 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 331 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Navigation = function (_get__2) {
+	  (0, _inherits3.default)(Navigation, _get__2);
+
+	  function Navigation() {
+	    (0, _classCallCheck3.default)(this, Navigation);
+	    return (0, _possibleConstructorReturn3.default)(this, (Navigation.__proto__ || (0, _getPrototypeOf2.default)(Navigation)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(Navigation, [{
+	    key: "render",
+	    value: function render() {
+	      return _get__("React").createElement(
+	        "ul",
+	        { className: "app-navigation" },
+	        _get__("React").createElement(
+	          "li",
+	          { className: "app-navigation__list-item" },
+	          "Home"
+	        ),
+	        _get__("React").createElement(
+	          "li",
+	          { className: "app-navigation__list-item" },
+	          "About"
+	        ),
+	        _get__("React").createElement(
+	          "li",
+	          { className: "app-navigation__list-item" },
+	          "Articles"
+	        )
+	      );
+	    }
+	  }]);
+	  return Navigation;
+	}(_get__("Component"));
+
+	exports.default = Navigation;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
 
 	(function () {
-		'use strict';
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
 
-		var hasOwn = {}.hasOwnProperty;
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
 
-		function classNames () {
-			var classes = [];
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
 
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
 
-				var argType = typeof arg;
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case "Component":
+	      return _react.Component;
 
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
+	    case "React":
+	      return _react2.default;
+	  }
 
-			return classes.join(' ');
-		}
+	  return undefined;
+	}
 
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
 
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === "undefined" ? "undefined" : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Navigation === "undefined" ? "undefined" : (0, _typeof3.default)(Navigation);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Navigation, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Navigation)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ }
 /******/ ]);
