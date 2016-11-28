@@ -6,7 +6,8 @@ export default class Navigation extends Component {
     return (
       <ul className="app-navigation">
         <NavListItem name="Home" icon="home" link="/" />
-        <NavListItem name="Articles" icon="home" link="/articles" />
+        <NavListItem name="Articles" icon="trophy" link="/articles" />
+        <NavListItem name="Rankings" icon="car" link="/rankings" />
         <NavListItem name="Contact" icon="envelope-o" link="/contact" />
       </ul>
     );

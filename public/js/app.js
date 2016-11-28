@@ -27952,7 +27952,7 @@
 	  path: '/',
 	  component: _get__('App'),
 	  indexRoute: { component: _get__('Home') },
-	  childRoutes: [{ path: '/articles', component: _get__('Articles') }, { path: '/contact', component: _get__('Contact') }]
+	  childRoutes: [{ path: '/articles', component: _get__('Articles') }, { path: '/rankings', component: _get__('Rankings') }, { path: '/contact', component: _get__('Contact') }]
 	};
 
 	exports.default = _get__('routes');
@@ -28004,6 +28004,9 @@
 
 	    case 'Articles':
 	      return _components.Articles;
+
+	    case 'Rankings':
+	      return _components.Rankings;
 
 	    case 'Contact':
 	      return _components.Contact;
@@ -28583,7 +28586,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Navigation = exports.Home = exports.Header = exports.Contact = exports.Articles = undefined;
+	exports.Rankings = exports.Navigation = exports.Home = exports.Header = exports.Contact = exports.Articles = undefined;
 
 	var _Articles = __webpack_require__(328);
 
@@ -28605,6 +28608,10 @@
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
+	var _Rankings = __webpack_require__(338);
+
+	var _Rankings2 = _interopRequireDefault(_Rankings);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.Articles = _Articles2.default;
@@ -28612,6 +28619,7 @@
 	exports.Header = _Header2.default;
 	exports.Home = _Home2.default;
 	exports.Navigation = _Navigation2.default;
+	exports.Rankings = _Rankings2.default;
 
 /***/ },
 /* 328 */
@@ -30506,7 +30514,8 @@
 	        'ul',
 	        { className: 'app-navigation' },
 	        _get__('React').createElement(_get__('NavListItem'), { name: 'Home', icon: 'home', link: '/' }),
-	        _get__('React').createElement(_get__('NavListItem'), { name: 'Articles', icon: 'home', link: '/articles' }),
+	        _get__('React').createElement(_get__('NavListItem'), { name: 'Articles', icon: 'trophy', link: '/articles' }),
+	        _get__('React').createElement(_get__('NavListItem'), { name: 'Rankings', icon: 'car', link: '/rankings' }),
 	        _get__('React').createElement(_get__('NavListItem'), { name: 'Contact', icon: 'envelope-o', link: '/contact' })
 	      );
 	    }
@@ -30652,6 +30661,236 @@
 	}
 
 	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Navigation)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
+
+/***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Rankings = function (_get__2) {
+	  (0, _inherits3.default)(Rankings, _get__2);
+
+	  function Rankings() {
+	    (0, _classCallCheck3.default)(this, Rankings);
+	    return (0, _possibleConstructorReturn3.default)(this, (Rankings.__proto__ || (0, _getPrototypeOf2.default)(Rankings)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(Rankings, [{
+	    key: 'render',
+	    value: function render() {
+	      return _get__('React').createElement(
+	        'div',
+	        null,
+	        'hello from rankings'
+	      );
+	    }
+	  }]);
+	  return Rankings;
+	}(_get__('Component'));
+
+	exports.default = Rankings;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
+
+	(function () {
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
+
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
+
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
+
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
+
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case 'Component':
+	      return _react.Component;
+
+	    case 'React':
+	      return _react2.default;
+	  }
+
+	  return undefined;
+	}
+
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
+
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === 'undefined' ? 'undefined' : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Rankings === 'undefined' ? 'undefined' : (0, _typeof3.default)(Rankings);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Rankings, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Rankings)) {
 	  addNonEnumerableProperty('__get__', _get__);
 	  addNonEnumerableProperty('__GetDependency__', _get__);
 	  addNonEnumerableProperty('__Rewire__', _set__);
