@@ -28604,11 +28604,11 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Navigation = __webpack_require__(337);
+	var _Navigation = __webpack_require__(339);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Rankings = __webpack_require__(338);
+	var _Rankings = __webpack_require__(340);
 
 	var _Rankings2 = _interopRequireDefault(_Rankings);
 
@@ -29562,23 +29562,28 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.NavListItem = exports.ContentPreview = exports.Button = undefined;
+	exports.NavListItem = exports.ContentPreview = exports.Countdown = exports.Button = undefined;
 
 	var _Button = __webpack_require__(333);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	var _ContentPreview = __webpack_require__(335);
+	var _Countdown = __webpack_require__(335);
+
+	var _Countdown2 = _interopRequireDefault(_Countdown);
+
+	var _ContentPreview = __webpack_require__(337);
 
 	var _ContentPreview2 = _interopRequireDefault(_ContentPreview);
 
-	var _NavListItem = __webpack_require__(336);
+	var _NavListItem = __webpack_require__(338);
 
 	var _NavListItem2 = _interopRequireDefault(_NavListItem);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.Button = _Button2.default;
+	exports.Countdown = _Countdown2.default;
 	exports.ContentPreview = _ContentPreview2.default;
 	exports.NavListItem = _NavListItem2.default;
 
@@ -29933,6 +29938,276 @@
 
 	var _create2 = _interopRequireDefault(_create);
 
+	var _objectDestructuringEmpty2 = __webpack_require__(336);
+
+	var _objectDestructuringEmpty3 = _interopRequireDefault(_objectDestructuringEmpty2);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Countdown = function (_get__2) {
+	  (0, _inherits3.default)(Countdown, _get__2);
+
+	  function Countdown() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    (0, _classCallCheck3.default)(this, Countdown);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Countdown.__proto__ || (0, _getPrototypeOf2.default)(Countdown)).call.apply(_ref, [this].concat(args))), _this), _this.countdown = function () {
+	      var end = new Date('4/27/2017');
+	      var now = new Date();
+	      var difference = Math.ceil((end - now) / (1000 * 3600 * 24));
+
+	      return difference;
+	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	  }
+
+	  (0, _createClass3.default)(Countdown, [{
+	    key: 'render',
+	    value: function render() {
+	      (0, _objectDestructuringEmpty3.default)(this.props);
+
+
+	      return _get__('React').createElement(
+	        'li',
+	        { className: 'app-navigation__list-item' },
+	        _get__('React').createElement(
+	          'div',
+	          null,
+	          this.countdown(),
+	          ' Days til draft day!'
+	        )
+	      );
+	    }
+	  }]);
+	  return Countdown;
+	}(_get__('Component'));
+
+	Countdown.propTypes = {};
+	exports.default = Countdown;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
+
+	(function () {
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
+
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
+
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
+
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
+
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case 'Component':
+	      return _react.Component;
+
+	    case 'React':
+	      return _react2.default;
+	  }
+
+	  return undefined;
+	}
+
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
+
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === 'undefined' ? 'undefined' : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Countdown === 'undefined' ? 'undefined' : (0, _typeof3.default)(Countdown);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Countdown, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Countdown)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
+
+/***/ },
+/* 336 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	exports.default = function (obj) {
+	  if (obj == null) throw new TypeError("Cannot destructure undefined");
+	};
+
+/***/ },
+/* 337 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
 	var _getPrototypeOf = __webpack_require__(316);
 
 	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -30169,7 +30444,7 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 336 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30441,7 +30716,7 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 337 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30516,7 +30791,8 @@
 	        _get__('React').createElement(_get__('NavListItem'), { name: 'Home', icon: 'home', link: '/' }),
 	        _get__('React').createElement(_get__('NavListItem'), { name: 'Articles', icon: 'trophy', link: '/articles' }),
 	        _get__('React').createElement(_get__('NavListItem'), { name: 'Rankings', icon: 'car', link: '/rankings' }),
-	        _get__('React').createElement(_get__('NavListItem'), { name: 'Contact', icon: 'envelope-o', link: '/contact' })
+	        _get__('React').createElement(_get__('NavListItem'), { name: 'Contact', icon: 'envelope-o', link: '/contact' }),
+	        _get__('React').createElement(_get__('Countdown'), null)
 	      );
 	    }
 	  }]);
@@ -30572,6 +30848,9 @@
 
 	    case 'NavListItem':
 	      return _patterns.NavListItem;
+
+	    case 'Countdown':
+	      return _patterns.Countdown;
 	  }
 
 	  return undefined;
@@ -30679,7 +30958,7 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 338 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
