@@ -1,14 +1,14 @@
 import App from './App';
-import { Home } from './components';
-console.log('home', Home);
+import { Articles, Contact, Home } from './components';
 
 const routes = {
   path: '/',
   component: App,
   indexRoute: { component: Home },
-  // childRoutes: [
-  //   { path: '/test', component: Test },
-  // ],
+  childRoutes: [
+    { path: '/articles', component: Articles },
+    { path: '/contact', component: Contact },
+  ],
 }
 
 export default routes;

@@ -5,9 +5,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="app-layout">
-      <Header />
+        <Navigation />
         <div className="app-layout__main">
-          <Navigation />
+          <Header />
           {this.props.children}
         </div>
       </div>
