@@ -8,7 +8,9 @@ export default class App extends Component {
         <Navigation />
         <div className="app-layout__main">
           <Header />
-          {this.props.children}
+          <div className="app-layout__children">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );

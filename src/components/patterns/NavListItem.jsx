@@ -21,7 +21,7 @@ export default class NavListItem extends Component {
     return (
       <li className={classes}>
         <Link className="app-navigation__list-item__link" to={link}>
-          {icon ? <i className={`fa fa-${icon}`}></i> : null}
+          {icon ? <i className={`fa fa-${icon} app-navigation__list-item__icon`}></i> : null}
           {name}
         </Link>
       </li>
