@@ -1,0 +1,37 @@
+import React, { Component } from 'react';
+
+export default class TextArea extends Component {
+  static propTypes = {
+    initialValue: React.PropTypes.string,
+    label: React.PropTypes.string,
+    name: React.PropTypes.string,
+    rows: React.PropTypes.number,
+    onChange: React.PropTypes.func,
+    placeholder: React.PropTypes.string,
+  }
+
+  state = {
+    value: '',
+  };
+
+  componentWillMount() {
+    if (this.props.initialValue) this.setState({ value: this.props.initialValue });
+  }
+
+  _handleChange = (event) => {
+    this.setState({ value: event.target.value });
+
+   if (this.props.onChange && typeof (this.props.onChange === 'function')) this.props.onChange(event.target.name, event.target.value);
+  }
+
+  render() {
+    const { label, placeholder, name, rows } = this.props;
+
+    return (
+      <div className="form__group">
+        <label htmlFor={label}>{label}</label>
+        <textarea rows={rows} name={name} onChange={this._handleChange} type="text" value={this.state.value} placeholder={placeholder} />
+      </div>
+    );
+  }
+}
