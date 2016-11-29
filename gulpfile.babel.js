@@ -16,10 +16,7 @@ const webpackConfig = require('./webpack.config');
 // ------------------------------
 // serve
 // ------------------------------
-gulp.task('serve', ['build:jsClient', 'build:styles', 'watch'], serve({
-    root: ['public'],
-    port: 3000,
-}));
+gulp.task('serve', ['build:jsClient', 'build:styles', 'watch'], serve({ port: 3000 }));
 
 // ------------------------------
 // watch
