@@ -26,9 +26,22 @@ export default class Contact extends Component {
     return (
       <div>
         <form>
-          <Input initialValue={this.state.firstName} name="firstName" onChange={this.handleChange} label="First Name" />
-          <Input initialValue={this.state.lastName} name="lastName" onChange={this.handleChange} label="Last Name" />
-          <Input initialValue={this.state.email} name="email" onChange={this.handleChange} label="Email Address" placeholder="example@gmail.com" />
+          <div className="row">
+            <div className="col-6">
+              <Input initialValue={this.state.firstName} name="firstName" onChange={this.handleChange} label="First Name" />
+            </div>
+            <div className="col-6">
+              <Input initialValue={this.state.lastName} name="lastName" onChange={this.handleChange} label="Last Name" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-6">
+              <Input initialValue={this.state.email} name="email" onChange={this.handleChange} label="Email Address" placeholder="example@gmail.com" />
+            </div>
+            <div className="col-6">
+              <Input initialValue={this.state.topic} name="topic" onChange={this.handleChange} label="Topic" placeholder="Running backs" />
+            </div>
+          </div>
           <TextArea initialValue={this.state.question} name="question" rows={5} label="Question" onChange={this.handleChange} />
           <Button type="warning" onClick={this.handleSubmit}>Submit</Button>
         </form>

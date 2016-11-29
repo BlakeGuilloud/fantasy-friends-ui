@@ -28221,11 +28221,11 @@
 	        _get__('React').createElement(
 	          'div',
 	          { className: 'app-layout__main' },
-	          _get__('React').createElement(_get__('Navigation'), null),
 	          _get__('React').createElement(
 	            'div',
 	            { className: 'app-layout__content' },
 	            _get__('React').createElement(_get__('Header'), null),
+	            _get__('React').createElement(_get__('Navigation'), null),
 	            _get__('React').createElement(
 	              'div',
 	              { className: 'app-layout__children' },
@@ -28287,11 +28287,11 @@
 	    case 'React':
 	      return _react2.default;
 
-	    case 'Navigation':
-	      return _components.Navigation;
-
 	    case 'Header':
 	      return _components.Header;
+
+	    case 'Navigation':
+	      return _components.Navigation;
 
 	    case 'Footer':
 	      return _components.Footer;
@@ -28963,9 +28963,34 @@
 	        _get__('React').createElement(
 	          'form',
 	          null,
-	          _get__('React').createElement(_get__('Input'), { initialValue: this.state.firstName, name: 'firstName', onChange: this.handleChange, label: 'First Name' }),
-	          _get__('React').createElement(_get__('Input'), { initialValue: this.state.lastName, name: 'lastName', onChange: this.handleChange, label: 'Last Name' }),
-	          _get__('React').createElement(_get__('Input'), { initialValue: this.state.email, name: 'email', onChange: this.handleChange, label: 'Email Address', placeholder: 'example@gmail.com' }),
+	          _get__('React').createElement(
+	            'div',
+	            { className: 'row' },
+	            _get__('React').createElement(
+	              'div',
+	              { className: 'col-6' },
+	              _get__('React').createElement(_get__('Input'), { initialValue: this.state.firstName, name: 'firstName', onChange: this.handleChange, label: 'First Name' })
+	            ),
+	            _get__('React').createElement(
+	              'div',
+	              { className: 'col-6' },
+	              _get__('React').createElement(_get__('Input'), { initialValue: this.state.lastName, name: 'lastName', onChange: this.handleChange, label: 'Last Name' })
+	            )
+	          ),
+	          _get__('React').createElement(
+	            'div',
+	            { className: 'row' },
+	            _get__('React').createElement(
+	              'div',
+	              { className: 'col-6' },
+	              _get__('React').createElement(_get__('Input'), { initialValue: this.state.email, name: 'email', onChange: this.handleChange, label: 'Email Address', placeholder: 'example@gmail.com' })
+	            ),
+	            _get__('React').createElement(
+	              'div',
+	              { className: 'col-6' },
+	              _get__('React').createElement(_get__('Input'), { initialValue: this.state.topic, name: 'topic', onChange: this.handleChange, label: 'Topic', placeholder: 'Running backs' })
+	            )
+	          ),
 	          _get__('React').createElement(_get__('TextArea'), { initialValue: this.state.question, name: 'question', rows: 5, label: 'Question', onChange: this.handleChange }),
 	          _get__('React').createElement(
 	            _get__('Button'),
@@ -29860,6 +29885,8 @@
 	          title = _props.title,
 	          timestamp = _props.timestamp;
 
+	      var preview = body.split(' ', 30).join(' ');
+	      console.log('newbody', preview);
 
 	      return _get__('React').createElement(
 	        'div',
@@ -29872,7 +29899,8 @@
 	        _get__('React').createElement(
 	          'div',
 	          { className: 'app-content__preview__body' },
-	          body
+	          preview,
+	          '...'
 	        ),
 	        _get__('React').createElement(
 	          'div',
@@ -31393,7 +31421,7 @@
 	      return _get__('React').createElement(
 	        'div',
 	        { className: 'app-content' },
-	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
+	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor slorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. it amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
 	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
 	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
 	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' })
@@ -31884,6 +31912,35 @@
 	      return _get__('React').createElement(
 	        'div',
 	        null,
+	        _get__('React').createElement(
+	          'h3',
+	          null,
+	          'Rankings'
+	        ),
+	        _get__('React').createElement(
+	          'ul',
+	          { className: 'app-rankings__nav' },
+	          _get__('React').createElement(
+	            'li',
+	            { className: 'app-rankings__nav-item' },
+	            'QB'
+	          ),
+	          _get__('React').createElement(
+	            'li',
+	            { className: 'app-rankings__nav-item' },
+	            'RB'
+	          ),
+	          _get__('React').createElement(
+	            'li',
+	            { className: 'app-rankings__nav-item' },
+	            'WR'
+	          ),
+	          _get__('React').createElement(
+	            'li',
+	            { className: 'app-rankings__nav-item' },
+	            'TE'
+	          )
+	        ),
 	        'hello from rankings'
 	      );
 	    }

@@ -22,6 +22,13 @@ export default class Rankings extends Component {
     ];
     return (
       <div>
+        <h3>Rankings</h3>
+        <ul className="app-rankings__nav">
+          <li className="app-rankings__nav-item">QB</li>
+          <li className="app-rankings__nav-item">RB</li>
+          <li className="app-rankings__nav-item">WR</li>
+          <li className="app-rankings__nav-item">TE</li>
+        </ul>
         hello from rankings
       </div>
     );

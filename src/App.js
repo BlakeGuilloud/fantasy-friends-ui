@@ -6,9 +6,9 @@ export default class App extends Component {
     return (
       <div className="app-layout">
         <div className="app-layout__main">
-          <Navigation />
           <div className="app-layout__content">
             <Header />
+            <Navigation />
             <div className="app-layout__children">
               {this.props.children}
             </div>

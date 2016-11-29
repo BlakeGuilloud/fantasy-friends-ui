@@ -13,12 +13,14 @@ export default class ContentPreview extends Component {
 
   render() {
     const { body, title, timestamp } = this.props;
+    const preview = body.split(' ', 30).join(' ');
+    console.log('newbody', preview);
 
     return (
       <div className="app-content__preview">
         <h3 className="app-content__preview__title">{title}</h3>
         <div className="app-content__preview__body">
-          {body}
+          {preview}...
         </div>
         <div className="app-content__preview__footer">
           {timestamp}
