@@ -8,7 +8,9 @@ export default class Button extends Component {
     type: React.PropTypes.oneOf(['default', 'primary', 'secondary', 'danger', 'warning']),
   }
 
-  _handleClick = () => {
+  _handleClick = (event) => {
+    event.preventDefault();
+
     if (this.props.onClick && typeof this.props.onClick === 'function') this.props.onClick();
   }
 

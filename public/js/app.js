@@ -28218,17 +28218,22 @@
 	      return _get__('React').createElement(
 	        'div',
 	        { className: 'app-layout' },
-	        _get__('React').createElement(_get__('Navigation'), null),
 	        _get__('React').createElement(
 	          'div',
 	          { className: 'app-layout__main' },
-	          _get__('React').createElement(_get__('Header'), null),
+	          _get__('React').createElement(_get__('Navigation'), null),
 	          _get__('React').createElement(
 	            'div',
-	            { className: 'app-layout__children' },
-	            this.props.children
+	            { className: 'app-layout__content' },
+	            _get__('React').createElement(_get__('Header'), null),
+	            _get__('React').createElement(
+	              'div',
+	              { className: 'app-layout__children' },
+	              this.props.children
+	            )
 	          )
-	        )
+	        ),
+	        _get__('React').createElement(_get__('Footer'), null)
 	      );
 	    }
 	  }]);
@@ -28287,6 +28292,9 @@
 
 	    case 'Header':
 	      return _components.Header;
+
+	    case 'Footer':
+	      return _components.Footer;
 	  }
 
 	  return undefined;
@@ -28586,7 +28594,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Rankings = exports.Navigation = exports.Home = exports.Header = exports.Contact = exports.Articles = undefined;
+	exports.Rankings = exports.Navigation = exports.Home = exports.Header = exports.Footer = exports.Contact = exports.Articles = undefined;
 
 	var _Articles = __webpack_require__(328);
 
@@ -28596,19 +28604,23 @@
 
 	var _Contact2 = _interopRequireDefault(_Contact);
 
-	var _Header = __webpack_require__(330);
+	var _Footer = __webpack_require__(338);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	var _Header = __webpack_require__(339);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Home = __webpack_require__(331);
+	var _Home = __webpack_require__(340);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Navigation = __webpack_require__(339);
+	var _Navigation = __webpack_require__(341);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Rankings = __webpack_require__(340);
+	var _Rankings = __webpack_require__(342);
 
 	var _Rankings2 = _interopRequireDefault(_Rankings);
 
@@ -28616,6 +28628,7 @@
 
 	exports.Articles = _Articles2.default;
 	exports.Contact = _Contact2.default;
+	exports.Footer = _Footer2.default;
 	exports.Header = _Header2.default;
 	exports.Home = _Home2.default;
 	exports.Navigation = _Navigation2.default;
@@ -28906,14 +28919,38 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _patterns = __webpack_require__(330);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Contact = function (_get__2) {
 	  (0, _inherits3.default)(Contact, _get__2);
 
 	  function Contact() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
 	    (0, _classCallCheck3.default)(this, Contact);
-	    return (0, _possibleConstructorReturn3.default)(this, (Contact.__proto__ || (0, _getPrototypeOf2.default)(Contact)).apply(this, arguments));
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Contact.__proto__ || (0, _getPrototypeOf2.default)(Contact)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      email: '',
+	      firstName: '',
+	      lastName: ''
+	    }, _this.handleChange = function (name, value) {
+	      var newState = {};
+
+	      newState[name] = value;
+
+	      _this.setState(newState);
+	    }, _this.handleSubmit = function () {
+
+	      console.log('The state to submit: ', _this.state);
+	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
 	  }
 
 	  (0, _createClass3.default)(Contact, [{
@@ -28922,7 +28959,18 @@
 	      return _get__('React').createElement(
 	        'div',
 	        null,
-	        'hello from contact'
+	        _get__('React').createElement(
+	          'form',
+	          null,
+	          _get__('React').createElement(_get__('Input'), { name: 'firstName', onChange: this.handleChange, label: 'First Name' }),
+	          _get__('React').createElement(_get__('Input'), { name: 'lastName', onChange: this.handleChange, label: 'Last Name' }),
+	          _get__('React').createElement(_get__('Input'), { name: 'email', onChange: this.handleChange, label: 'Email Address', placeholder: 'example@gmail.com' }),
+	          _get__('React').createElement(
+	            _get__('Button'),
+	            { type: 'warning', onClick: this.handleSubmit },
+	            'Submit'
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -28975,6 +29023,12 @@
 
 	    case 'React':
 	      return _react2.default;
+
+	    case 'Input':
+	      return _patterns.Input;
+
+	    case 'Button':
+	      return _patterns.Button;
 	  }
 
 	  return undefined;
@@ -29085,235 +29139,40 @@
 /* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+	exports.NavListItem = exports.Input = exports.ContentPreview = exports.Countdown = exports.Button = undefined;
 
-	var _isExtensible = __webpack_require__(312);
+	var _Button = __webpack_require__(331);
 
-	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+	var _Button2 = _interopRequireDefault(_Button);
 
-	var _keys = __webpack_require__(1);
+	var _Countdown = __webpack_require__(333);
 
-	var _keys2 = _interopRequireDefault(_keys);
+	var _Countdown2 = _interopRequireDefault(_Countdown);
 
-	var _typeof2 = __webpack_require__(36);
+	var _ContentPreview = __webpack_require__(335);
 
-	var _typeof3 = _interopRequireDefault(_typeof2);
+	var _ContentPreview2 = _interopRequireDefault(_ContentPreview);
 
-	var _defineProperty = __webpack_require__(73);
+	var _Input = __webpack_require__(336);
 
-	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+	var _Input2 = _interopRequireDefault(_Input);
 
-	var _create = __webpack_require__(76);
+	var _NavListItem = __webpack_require__(337);
 
-	var _create2 = _interopRequireDefault(_create);
-
-	var _getPrototypeOf = __webpack_require__(316);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(319);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(320);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(321);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(322);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(79);
-
-	var _react2 = _interopRequireDefault(_react);
+	var _NavListItem2 = _interopRequireDefault(_NavListItem);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Header = function (_get__2) {
-	  (0, _inherits3.default)(Header, _get__2);
-
-	  function Header() {
-	    (0, _classCallCheck3.default)(this, Header);
-	    return (0, _possibleConstructorReturn3.default)(this, (Header.__proto__ || (0, _getPrototypeOf2.default)(Header)).apply(this, arguments));
-	  }
-
-	  (0, _createClass3.default)(Header, [{
-	    key: "render",
-	    value: function render() {
-	      return _get__("React").createElement(
-	        "div",
-	        { className: "app-header" },
-	        _get__("React").createElement(
-	          "div",
-	          { className: "app-header__logo" },
-	          "The Fantasy Friends"
-	        )
-	      );
-	    }
-	  }]);
-	  return Header;
-	}(_get__("Component"));
-
-	exports.default = Header;
-
-	var _RewiredData__ = (0, _create2.default)(null);
-
-	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
-	var _RewireAPI__ = {};
-
-	(function () {
-	  function addPropertyToAPIObject(name, value) {
-	    (0, _defineProperty2.default)(_RewireAPI__, name, {
-	      value: value,
-	      enumerable: false,
-	      configurable: true
-	    });
-	  }
-
-	  addPropertyToAPIObject('__get__', _get__);
-	  addPropertyToAPIObject('__GetDependency__', _get__);
-	  addPropertyToAPIObject('__Rewire__', _set__);
-	  addPropertyToAPIObject('__set__', _set__);
-	  addPropertyToAPIObject('__reset__', _reset__);
-	  addPropertyToAPIObject('__ResetDependency__', _reset__);
-	  addPropertyToAPIObject('__with__', _with__);
-	})();
-
-	function _get__(variableName) {
-	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
-	    return _get_original__(variableName);
-	  } else {
-	    var value = _RewiredData__[variableName];
-
-	    if (value === INTENTIONAL_UNDEFINED) {
-	      return undefined;
-	    } else {
-	      return value;
-	    }
-	  }
-	}
-
-	function _get_original__(variableName) {
-	  switch (variableName) {
-	    case "Component":
-	      return _react.Component;
-
-	    case "React":
-	      return _react2.default;
-	  }
-
-	  return undefined;
-	}
-
-	function _assign__(variableName, value) {
-	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
-	    return _set_original__(variableName, value);
-	  } else {
-	    return _RewiredData__[variableName] = value;
-	  }
-	}
-
-	function _set_original__(variableName, _value) {
-	  switch (variableName) {}
-
-	  return undefined;
-	}
-
-	function _update_operation__(operation, variableName, prefix) {
-	  var oldValue = _get__(variableName);
-
-	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
-
-	  _assign__(variableName, newValue);
-
-	  return prefix ? newValue : oldValue;
-	}
-
-	function _set__(variableName, value) {
-	  if ((typeof variableName === "undefined" ? "undefined" : (0, _typeof3.default)(variableName)) === 'object') {
-	    (0, _keys2.default)(variableName).forEach(function (name) {
-	      _RewiredData__[name] = variableName[name];
-	    });
-	  } else {
-	    if (value === undefined) {
-	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
-	    } else {
-	      _RewiredData__[variableName] = value;
-	    }
-
-	    return function () {
-	      _reset__(variableName);
-	    };
-	  }
-	}
-
-	function _reset__(variableName) {
-	  delete _RewiredData__[variableName];
-	}
-
-	function _with__(object) {
-	  var rewiredVariableNames = (0, _keys2.default)(object);
-	  var previousValues = {};
-
-	  function reset() {
-	    rewiredVariableNames.forEach(function (variableName) {
-	      _RewiredData__[variableName] = previousValues[variableName];
-	    });
-	  }
-
-	  return function (callback) {
-	    rewiredVariableNames.forEach(function (variableName) {
-	      previousValues[variableName] = _RewiredData__[variableName];
-	      _RewiredData__[variableName] = object[variableName];
-	    });
-	    var result = callback();
-
-	    if (!!result && typeof result.then == 'function') {
-	      result.then(reset).catch(reset);
-	    } else {
-	      reset();
-	    }
-
-	    return result;
-	  };
-	}
-
-	var _typeOfOriginalExport = typeof Header === "undefined" ? "undefined" : (0, _typeof3.default)(Header);
-
-	function addNonEnumerableProperty(name, value) {
-	  (0, _defineProperty2.default)(Header, name, {
-	    value: value,
-	    enumerable: false,
-	    configurable: true
-	  });
-	}
-
-	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Header)) {
-	  addNonEnumerableProperty('__get__', _get__);
-	  addNonEnumerableProperty('__GetDependency__', _get__);
-	  addNonEnumerableProperty('__Rewire__', _set__);
-	  addNonEnumerableProperty('__set__', _set__);
-	  addNonEnumerableProperty('__reset__', _reset__);
-	  addNonEnumerableProperty('__ResetDependency__', _reset__);
-	  addNonEnumerableProperty('__with__', _with__);
-	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
-	}
-
-	exports.__get__ = _get__;
-	exports.__GetDependency__ = _get__;
-	exports.__Rewire__ = _set__;
-	exports.__set__ = _set__;
-	exports.__ResetDependency__ = _reset__;
-	exports.__RewireAPI__ = _RewireAPI__;
+	exports.Button = _Button2.default;
+	exports.Countdown = _Countdown2.default;
+	exports.ContentPreview = _ContentPreview2.default;
+	exports.Input = _Input2.default;
+	exports.NavListItem = _NavListItem2.default;
 
 /***/ },
 /* 331 */
@@ -29370,279 +29229,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _patterns = __webpack_require__(332);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Home = function (_get__2) {
-	  (0, _inherits3.default)(Home, _get__2);
-
-	  function Home() {
-	    (0, _classCallCheck3.default)(this, Home);
-	    return (0, _possibleConstructorReturn3.default)(this, (Home.__proto__ || (0, _getPrototypeOf2.default)(Home)).apply(this, arguments));
-	  }
-
-	  (0, _createClass3.default)(Home, [{
-	    key: 'render',
-	    value: function render() {
-	      return _get__('React').createElement(
-	        'div',
-	        { className: 'app-content' },
-	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
-	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
-	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
-	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' })
-	      );
-	    }
-	  }]);
-	  return Home;
-	}(_get__('Component'));
-
-	exports.default = Home;
-
-	var _RewiredData__ = (0, _create2.default)(null);
-
-	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
-	var _RewireAPI__ = {};
-
-	(function () {
-	  function addPropertyToAPIObject(name, value) {
-	    (0, _defineProperty2.default)(_RewireAPI__, name, {
-	      value: value,
-	      enumerable: false,
-	      configurable: true
-	    });
-	  }
-
-	  addPropertyToAPIObject('__get__', _get__);
-	  addPropertyToAPIObject('__GetDependency__', _get__);
-	  addPropertyToAPIObject('__Rewire__', _set__);
-	  addPropertyToAPIObject('__set__', _set__);
-	  addPropertyToAPIObject('__reset__', _reset__);
-	  addPropertyToAPIObject('__ResetDependency__', _reset__);
-	  addPropertyToAPIObject('__with__', _with__);
-	})();
-
-	function _get__(variableName) {
-	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
-	    return _get_original__(variableName);
-	  } else {
-	    var value = _RewiredData__[variableName];
-
-	    if (value === INTENTIONAL_UNDEFINED) {
-	      return undefined;
-	    } else {
-	      return value;
-	    }
-	  }
-	}
-
-	function _get_original__(variableName) {
-	  switch (variableName) {
-	    case 'Component':
-	      return _react.Component;
-
-	    case 'React':
-	      return _react2.default;
-
-	    case 'ContentPreview':
-	      return _patterns.ContentPreview;
-	  }
-
-	  return undefined;
-	}
-
-	function _assign__(variableName, value) {
-	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
-	    return _set_original__(variableName, value);
-	  } else {
-	    return _RewiredData__[variableName] = value;
-	  }
-	}
-
-	function _set_original__(variableName, _value) {
-	  switch (variableName) {}
-
-	  return undefined;
-	}
-
-	function _update_operation__(operation, variableName, prefix) {
-	  var oldValue = _get__(variableName);
-
-	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
-
-	  _assign__(variableName, newValue);
-
-	  return prefix ? newValue : oldValue;
-	}
-
-	function _set__(variableName, value) {
-	  if ((typeof variableName === 'undefined' ? 'undefined' : (0, _typeof3.default)(variableName)) === 'object') {
-	    (0, _keys2.default)(variableName).forEach(function (name) {
-	      _RewiredData__[name] = variableName[name];
-	    });
-	  } else {
-	    if (value === undefined) {
-	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
-	    } else {
-	      _RewiredData__[variableName] = value;
-	    }
-
-	    return function () {
-	      _reset__(variableName);
-	    };
-	  }
-	}
-
-	function _reset__(variableName) {
-	  delete _RewiredData__[variableName];
-	}
-
-	function _with__(object) {
-	  var rewiredVariableNames = (0, _keys2.default)(object);
-	  var previousValues = {};
-
-	  function reset() {
-	    rewiredVariableNames.forEach(function (variableName) {
-	      _RewiredData__[variableName] = previousValues[variableName];
-	    });
-	  }
-
-	  return function (callback) {
-	    rewiredVariableNames.forEach(function (variableName) {
-	      previousValues[variableName] = _RewiredData__[variableName];
-	      _RewiredData__[variableName] = object[variableName];
-	    });
-	    var result = callback();
-
-	    if (!!result && typeof result.then == 'function') {
-	      result.then(reset).catch(reset);
-	    } else {
-	      reset();
-	    }
-
-	    return result;
-	  };
-	}
-
-	var _typeOfOriginalExport = typeof Home === 'undefined' ? 'undefined' : (0, _typeof3.default)(Home);
-
-	function addNonEnumerableProperty(name, value) {
-	  (0, _defineProperty2.default)(Home, name, {
-	    value: value,
-	    enumerable: false,
-	    configurable: true
-	  });
-	}
-
-	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Home)) {
-	  addNonEnumerableProperty('__get__', _get__);
-	  addNonEnumerableProperty('__GetDependency__', _get__);
-	  addNonEnumerableProperty('__Rewire__', _set__);
-	  addNonEnumerableProperty('__set__', _set__);
-	  addNonEnumerableProperty('__reset__', _reset__);
-	  addNonEnumerableProperty('__ResetDependency__', _reset__);
-	  addNonEnumerableProperty('__with__', _with__);
-	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
-	}
-
-	exports.__get__ = _get__;
-	exports.__GetDependency__ = _get__;
-	exports.__Rewire__ = _set__;
-	exports.__set__ = _set__;
-	exports.__ResetDependency__ = _reset__;
-	exports.__RewireAPI__ = _RewireAPI__;
-
-/***/ },
-/* 332 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.NavListItem = exports.ContentPreview = exports.Countdown = exports.Button = undefined;
-
-	var _Button = __webpack_require__(333);
-
-	var _Button2 = _interopRequireDefault(_Button);
-
-	var _Countdown = __webpack_require__(335);
-
-	var _Countdown2 = _interopRequireDefault(_Countdown);
-
-	var _ContentPreview = __webpack_require__(337);
-
-	var _ContentPreview2 = _interopRequireDefault(_ContentPreview);
-
-	var _NavListItem = __webpack_require__(338);
-
-	var _NavListItem2 = _interopRequireDefault(_NavListItem);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.Button = _Button2.default;
-	exports.Countdown = _Countdown2.default;
-	exports.ContentPreview = _ContentPreview2.default;
-	exports.NavListItem = _NavListItem2.default;
-
-/***/ },
-/* 333 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
-
-	var _isExtensible = __webpack_require__(312);
-
-	var _isExtensible2 = _interopRequireDefault(_isExtensible);
-
-	var _keys = __webpack_require__(1);
-
-	var _keys2 = _interopRequireDefault(_keys);
-
-	var _typeof2 = __webpack_require__(36);
-
-	var _typeof3 = _interopRequireDefault(_typeof2);
-
-	var _defineProperty = __webpack_require__(73);
-
-	var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-	var _create = __webpack_require__(76);
-
-	var _create2 = _interopRequireDefault(_create);
-
-	var _getPrototypeOf = __webpack_require__(316);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(319);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(320);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(321);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(322);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(79);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(334);
+	var _classnames = __webpack_require__(332);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -29662,7 +29249,9 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Button.__proto__ || (0, _getPrototypeOf2.default)(Button)).call.apply(_ref, [this].concat(args))), _this), _this._handleClick = function () {
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Button.__proto__ || (0, _getPrototypeOf2.default)(Button)).call.apply(_ref, [this].concat(args))), _this), _this._handleClick = function (event) {
+	      event.preventDefault();
+
 	      if (_this.props.onClick && typeof _this.props.onClick === 'function') _this.props.onClick();
 	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
 	  }
@@ -29854,7 +29443,7 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 334 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -29908,7 +29497,7 @@
 
 
 /***/ },
-/* 335 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29938,7 +29527,7 @@
 
 	var _create2 = _interopRequireDefault(_create);
 
-	var _objectDestructuringEmpty2 = __webpack_require__(336);
+	var _objectDestructuringEmpty2 = __webpack_require__(334);
 
 	var _objectDestructuringEmpty3 = _interopRequireDefault(_objectDestructuringEmpty2);
 
@@ -30166,7 +29755,7 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 336 */
+/* 334 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30178,7 +29767,7 @@
 	};
 
 /***/ },
-/* 337 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30444,7 +30033,275 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 338 */
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Input = function (_get__2) {
+	  (0, _inherits3.default)(Input, _get__2);
+
+	  function Input() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    (0, _classCallCheck3.default)(this, Input);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Input.__proto__ || (0, _getPrototypeOf2.default)(Input)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      value: ''
+	    }, _this._handleChange = function (event) {
+	      _this.setState({ value: event.target.value });
+
+	      if (_this.props.onChange && (0, _typeof3.default)(_this.props.onChange === 'function')) _this.props.onChange(event.target.name, event.target.value);
+	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	  }
+
+	  (0, _createClass3.default)(Input, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      if (this.props.initialValue) this.setState({ value: this.props.initialValue });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          label = _props.label,
+	          placeholder = _props.placeholder,
+	          name = _props.name;
+
+
+	      return _get__('React').createElement(
+	        'div',
+	        { className: 'form__group' },
+	        _get__('React').createElement(
+	          'label',
+	          { htmlFor: label },
+	          label
+	        ),
+	        _get__('React').createElement('input', { name: name, onChange: this._handleChange, type: 'text', value: this.state.value, placeholder: placeholder })
+	      );
+	    }
+	  }]);
+	  return Input;
+	}(_get__('Component'));
+
+	Input.propTypes = {
+	  initialValue: _get__('React').PropTypes.string,
+	  label: _get__('React').PropTypes.string,
+	  name: _get__('React').PropTypes.string,
+	  onChange: _get__('React').PropTypes.func,
+	  placeholder: _get__('React').PropTypes.string
+	};
+	exports.default = Input;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
+
+	(function () {
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
+
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
+
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
+
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
+
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case 'React':
+	      return _react2.default;
+
+	    case 'Component':
+	      return _react.Component;
+	  }
+
+	  return undefined;
+	}
+
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
+
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === 'undefined' ? 'undefined' : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Input === 'undefined' ? 'undefined' : (0, _typeof3.default)(Input);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Input, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Input)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
+
+/***/ },
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30500,7 +30357,7 @@
 
 	var _reactRouter = __webpack_require__(256);
 
-	var _classnames = __webpack_require__(334);
+	var _classnames = __webpack_require__(332);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -30716,7 +30573,475 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Footer = function (_get__2) {
+	  (0, _inherits3.default)(Footer, _get__2);
+
+	  function Footer() {
+	    (0, _classCallCheck3.default)(this, Footer);
+	    return (0, _possibleConstructorReturn3.default)(this, (Footer.__proto__ || (0, _getPrototypeOf2.default)(Footer)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(Footer, [{
+	    key: "render",
+	    value: function render() {
+	      return _get__("React").createElement(
+	        "div",
+	        { className: "app-footer" },
+	        _get__("React").createElement(
+	          "div",
+	          { className: "app-footer__logo" },
+	          "Fantasy Friends | Login"
+	        )
+	      );
+	    }
+	  }]);
+	  return Footer;
+	}(_get__("Component"));
+
+	exports.default = Footer;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
+
+	(function () {
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
+
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
+
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
+
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
+
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case "Component":
+	      return _react.Component;
+
+	    case "React":
+	      return _react2.default;
+	  }
+
+	  return undefined;
+	}
+
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
+
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === "undefined" ? "undefined" : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Footer === "undefined" ? "undefined" : (0, _typeof3.default)(Footer);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Footer, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Footer)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
+
+/***/ },
 /* 339 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Header = function (_get__2) {
+	  (0, _inherits3.default)(Header, _get__2);
+
+	  function Header() {
+	    (0, _classCallCheck3.default)(this, Header);
+	    return (0, _possibleConstructorReturn3.default)(this, (Header.__proto__ || (0, _getPrototypeOf2.default)(Header)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(Header, [{
+	    key: "render",
+	    value: function render() {
+	      return _get__("React").createElement(
+	        "div",
+	        { className: "app-header" },
+	        _get__("React").createElement(
+	          "div",
+	          { className: "app-header__logo" },
+	          "The Fantasy Friends"
+	        )
+	      );
+	    }
+	  }]);
+	  return Header;
+	}(_get__("Component"));
+
+	exports.default = Header;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
+
+	(function () {
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
+
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
+
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
+
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
+
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case "Component":
+	      return _react.Component;
+
+	    case "React":
+	      return _react2.default;
+	  }
+
+	  return undefined;
+	}
+
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
+
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === "undefined" ? "undefined" : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Header === "undefined" ? "undefined" : (0, _typeof3.default)(Header);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Header, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Header)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
+
+/***/ },
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30770,7 +31095,245 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _patterns = __webpack_require__(332);
+	var _patterns = __webpack_require__(330);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Home = function (_get__2) {
+	  (0, _inherits3.default)(Home, _get__2);
+
+	  function Home() {
+	    (0, _classCallCheck3.default)(this, Home);
+	    return (0, _possibleConstructorReturn3.default)(this, (Home.__proto__ || (0, _getPrototypeOf2.default)(Home)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(Home, [{
+	    key: 'render',
+	    value: function render() {
+	      return _get__('React').createElement(
+	        'div',
+	        { className: 'app-content' },
+	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
+	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
+	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' }),
+	        _get__('React').createElement(_get__('ContentPreview'), { title: 'A very exciting article about things and stuff', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolores numquam facere commodi totam se!', timestamp: '12 / 12 / 2016' })
+	      );
+	    }
+	  }]);
+	  return Home;
+	}(_get__('Component'));
+
+	exports.default = Home;
+
+	var _RewiredData__ = (0, _create2.default)(null);
+
+	var INTENTIONAL_UNDEFINED = '__INTENTIONAL_UNDEFINED__';
+	var _RewireAPI__ = {};
+
+	(function () {
+	  function addPropertyToAPIObject(name, value) {
+	    (0, _defineProperty2.default)(_RewireAPI__, name, {
+	      value: value,
+	      enumerable: false,
+	      configurable: true
+	    });
+	  }
+
+	  addPropertyToAPIObject('__get__', _get__);
+	  addPropertyToAPIObject('__GetDependency__', _get__);
+	  addPropertyToAPIObject('__Rewire__', _set__);
+	  addPropertyToAPIObject('__set__', _set__);
+	  addPropertyToAPIObject('__reset__', _reset__);
+	  addPropertyToAPIObject('__ResetDependency__', _reset__);
+	  addPropertyToAPIObject('__with__', _with__);
+	})();
+
+	function _get__(variableName) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _get_original__(variableName);
+	  } else {
+	    var value = _RewiredData__[variableName];
+
+	    if (value === INTENTIONAL_UNDEFINED) {
+	      return undefined;
+	    } else {
+	      return value;
+	    }
+	  }
+	}
+
+	function _get_original__(variableName) {
+	  switch (variableName) {
+	    case 'Component':
+	      return _react.Component;
+
+	    case 'React':
+	      return _react2.default;
+
+	    case 'ContentPreview':
+	      return _patterns.ContentPreview;
+	  }
+
+	  return undefined;
+	}
+
+	function _assign__(variableName, value) {
+	  if (_RewiredData__ === undefined || _RewiredData__[variableName] === undefined) {
+	    return _set_original__(variableName, value);
+	  } else {
+	    return _RewiredData__[variableName] = value;
+	  }
+	}
+
+	function _set_original__(variableName, _value) {
+	  switch (variableName) {}
+
+	  return undefined;
+	}
+
+	function _update_operation__(operation, variableName, prefix) {
+	  var oldValue = _get__(variableName);
+
+	  var newValue = operation === '++' ? oldValue + 1 : oldValue - 1;
+
+	  _assign__(variableName, newValue);
+
+	  return prefix ? newValue : oldValue;
+	}
+
+	function _set__(variableName, value) {
+	  if ((typeof variableName === 'undefined' ? 'undefined' : (0, _typeof3.default)(variableName)) === 'object') {
+	    (0, _keys2.default)(variableName).forEach(function (name) {
+	      _RewiredData__[name] = variableName[name];
+	    });
+	  } else {
+	    if (value === undefined) {
+	      _RewiredData__[variableName] = INTENTIONAL_UNDEFINED;
+	    } else {
+	      _RewiredData__[variableName] = value;
+	    }
+
+	    return function () {
+	      _reset__(variableName);
+	    };
+	  }
+	}
+
+	function _reset__(variableName) {
+	  delete _RewiredData__[variableName];
+	}
+
+	function _with__(object) {
+	  var rewiredVariableNames = (0, _keys2.default)(object);
+	  var previousValues = {};
+
+	  function reset() {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      _RewiredData__[variableName] = previousValues[variableName];
+	    });
+	  }
+
+	  return function (callback) {
+	    rewiredVariableNames.forEach(function (variableName) {
+	      previousValues[variableName] = _RewiredData__[variableName];
+	      _RewiredData__[variableName] = object[variableName];
+	    });
+	    var result = callback();
+
+	    if (!!result && typeof result.then == 'function') {
+	      result.then(reset).catch(reset);
+	    } else {
+	      reset();
+	    }
+
+	    return result;
+	  };
+	}
+
+	var _typeOfOriginalExport = typeof Home === 'undefined' ? 'undefined' : (0, _typeof3.default)(Home);
+
+	function addNonEnumerableProperty(name, value) {
+	  (0, _defineProperty2.default)(Home, name, {
+	    value: value,
+	    enumerable: false,
+	    configurable: true
+	  });
+	}
+
+	if ((_typeOfOriginalExport === 'object' || _typeOfOriginalExport === 'function') && (0, _isExtensible2.default)(Home)) {
+	  addNonEnumerableProperty('__get__', _get__);
+	  addNonEnumerableProperty('__GetDependency__', _get__);
+	  addNonEnumerableProperty('__Rewire__', _set__);
+	  addNonEnumerableProperty('__set__', _set__);
+	  addNonEnumerableProperty('__reset__', _reset__);
+	  addNonEnumerableProperty('__ResetDependency__', _reset__);
+	  addNonEnumerableProperty('__with__', _with__);
+	  addNonEnumerableProperty('__RewireAPI__', _RewireAPI__);
+	}
+
+	exports.__get__ = _get__;
+	exports.__GetDependency__ = _get__;
+	exports.__Rewire__ = _set__;
+	exports.__set__ = _set__;
+	exports.__ResetDependency__ = _reset__;
+	exports.__RewireAPI__ = _RewireAPI__;
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.__RewireAPI__ = exports.__ResetDependency__ = exports.__set__ = exports.__Rewire__ = exports.__GetDependency__ = exports.__get__ = undefined;
+
+	var _isExtensible = __webpack_require__(312);
+
+	var _isExtensible2 = _interopRequireDefault(_isExtensible);
+
+	var _keys = __webpack_require__(1);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(36);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	var _defineProperty = __webpack_require__(73);
+
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+	var _create = __webpack_require__(76);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _getPrototypeOf = __webpack_require__(316);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(319);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(320);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(321);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(322);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(79);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _patterns = __webpack_require__(330);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30958,7 +31521,7 @@
 	exports.__RewireAPI__ = _RewireAPI__;
 
 /***/ },
-/* 340 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31025,6 +31588,19 @@
 	  (0, _createClass3.default)(Rankings, [{
 	    key: 'render',
 	    value: function render() {
+	      var receivers = [{
+	        name: 'Julio Jones',
+	        rank: 1
+	      }, {
+	        name: 'Antonio Brown',
+	        rank: 2
+	      }, {
+	        name: 'Odell beckham',
+	        rank: 3
+	      }, {
+	        name: 'Kelvin Benjamin',
+	        rank: 4
+	      }];
 	      return _get__('React').createElement(
 	        'div',
 	        null,
