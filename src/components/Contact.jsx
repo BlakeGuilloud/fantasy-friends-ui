@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, TextArea } from './patterns';
+import { Input, Button, TextArea } from 'react-form-control';
 
 export default class Contact extends Component {
   state = {
@@ -42,7 +42,7 @@ export default class Contact extends Component {
               <Input initialValue={this.state.topic} name="topic" onChange={this.handleChange} label="Topic" placeholder="Running backs" />
             </div>
           </div>
-          <TextArea initialValue={this.state.question} name="question" rows={5} label="Question" onChange={this.handleChange} />
+          <TextArea initialValue={this.state.question} name="question" label="Question" onChange={this.handleChange} />
           <Button type="warning" onClick={this.handleSubmit}>Submit</Button>
         </form>
       </div>
